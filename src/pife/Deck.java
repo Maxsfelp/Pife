@@ -5,12 +5,12 @@ import java.util.*;
 
 public class Deck {
     private List<Card> deck = new ArrayList<Card>();
-    private Card card = new Card();
     private int numCards;
 
     public Deck(){
         for (int i = 0; i < 4; i++) {
             for (int j = 1; j < 14; j++) {
+                Card card = new Card();
                 card.setNumber(j);
                 card.setSuit(i);
                 card.setColor_back(1);
@@ -46,7 +46,7 @@ public class Deck {
 
     public List<Card> deal(){
         List<Card> hand = new ArrayList<Card>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 9; i++) {
             hand.add(getDeck());
         }
         return hand;
