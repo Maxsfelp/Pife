@@ -1,20 +1,20 @@
 package pife;
-import pife.*;
 
-import java.util.ArrayList;
+import pife.*;
+import java.util.*;
 
 public class Player {
-    private ArrayList<Card> hand = new ArrayList<Card>();
+    private List<Card> hand = new ArrayList<Card>();
 
     public Card getHand(int index) {
         return hand.get(index);
     }
 
-    public void setHand(Card card) {
-        this.hand.add(card);
+    public void setHand(List<Card> hand) {
+        this.hand = hand;
     }
 
-    public void discard(){
+    public void discard(int index){
 
     }
 

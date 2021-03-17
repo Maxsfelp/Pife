@@ -1,25 +1,54 @@
 package pife;
 
 import pife.Card;
-import java.util.Stack;
+import java.util.*;
 
 public class Deck {
-    private Stack<Card> deck = new Stack<Card>();
+    private List<Card> deck = new ArrayList<Card>();
     private Card card = new Card();
+    private int numCards;
+
+    public Deck(){
+        for (int i = 0; i < 4; i++) {
+            for (int j = 1; j < 14; j++) {
+                card.setNumber(j);
+                card.setSuit(i);
+                card.setColor_back(1);
+                setDeck(card);
+                card.setColor_back(2);
+                setDeck(card);
+            }
+        }
+        shuffle();
+        setNumCards(deck.size());
+    }
 
     public Card getDeck() {
-        return deck.pop();
+        Card card = deck.get(deck.size() - 1);
+        deck.remove(deck.size() - 1);
+        setNumCards(deck.size());
+        return card;
+    }
+    public int getNumCards() {
+        return numCards;
     }
 
     public void setDeck(Card card) {
-        this.deck.push(card);
+        this.deck.add(card);
+    }
+    public void setNumCards(int numCards) {
+        this.numCards = numCards;
     }
 
-    public Card shuffle(){
-        return card;
+    public void shuffle(){
+        Collections.shuffle(deck);
     }
 
-    public Card deal(){
-        return card;
+    public List<Card> deal(){
+        List<Card> hand = new ArrayList<Card>();
+        for (int i = 0; i < 5; i++) {
+            hand.add(getDeck());
+        }
+        return hand;
     }
 }
